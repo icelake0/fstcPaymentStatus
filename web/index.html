@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  <title>Softwork</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="bootstrap/3.2.0/css/bootstrap.min.css">
+	  <script  type="text/javascript" src="jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+	  <script src="bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	  <style>
+		@font-face {
+		   font-family: myFirstFont;
+		   src: url(fonts/ristella/Ristella_PERSONAL_USE_ONLY.ttf);
+		}
+		.logoText{
+		padding:10px;
+		margin:5px;
+		height:20px;
+		width:20px;
+		font-size:30px;
+		color:#ffffff;
+		font-family:myFirstFont;
+		}
+		.footer{	
+			color:#ffffff;
+			font-size:16px;
+			text-align:center;
+			bottom:0px;
+			background-color:#000000;
+		}
+		.container{
+			background-color:lightgreen;
+		}
+		.header{
+			background-color:#009900;
+			height:100px;
+		}
+		#schoollogo{
+			height:100px;
+			width:100px;
+		}
+		#schoolname{
+			display:inline;
+			font-size:40px;
+			padding-bottom:0px;
+			padding-top:50px;
+		}
+		#studentpicture{
+			height:200px;
+			width:200px;
+		}
+		.att{
+			font-size:25px;
+			color:#009900;
+		}
+		.val{
+			font-size:25px;
+		}
+		/*@media screen and (min-width: 768px) {
+			#schoolname{
+				display:inline;
+				font-size:30px;
+				padding-bottom:0px;
+				padding-top:50px;
+			}
+		}
+		@media screen and (min-width: 450px) {
+			#schoolname{
+				display:inline;
+				font-size:20px;
+				padding-bottom:0px;
+				padding-top:50px;
+			}
+		}*/
+	  </style>
+	  <script>
+			function loadstudentprofile() {
+				var firstname=document.getElementById('firstname').value;
+				var lastname=document.getElementById('lastname').value;
+				//if (firstname=="") {
+				//document.getElementById("txtHint").innerHTML="";
+				//return;
+				//} 
+			 if (window.XMLHttpRequest) {
+				xmlhttp=new XMLHttpRequest();
+			 } else {
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			 }
+			  xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				  document.getElementById('r').innerHTML=xmlhttp.responseText;
+				}
+			  }
+			  xmlhttp.open("GET","getstudentinfo.php?firstname="+firstname+"&lastname="+lastname,true);
+			  xmlhttp.send();
+			}
+	  </script>
+	</head>
+	<body>
+		<div class='container'>
+			<div class ='row header'>
+				<div col-lg-12>
+					<img id ='schoollogo'src='images/logo.jpg'>
+					<span id='schoolname'>Federal Science and Technice Colledge yaba</span>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-lg-3'></div>
+				<div class='col-lg-6' style='margin-top:15px;background-color:#009900; padding:20px 20px 20px 20px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);'>
+					
+						<div class="form-group">
+								<label>firstname</label>
+								<input type="text" class="form-control" id="firstname">
+						</div>
+						<div class="form-group">
+							<label>lastname</label>
+							<input type="text" class="form-control" id="lastname">
+						</div>
+						<button type="submit" class="btn" style='background-color:#404040; color:#ffffff;' onclick='loadstudentprofile()'><span class="glyphicon glyphicon-log-in"></span> check</button>
+				</div>
+				<div class='col-lg-3'></div>
+			</div>
+			<div class='row' style='margin-top:10px;' id='r'>
+				<div class='col-lg-3'>
+				<img id ='studentpicture'src='profilePics/default.png'>
+			</div>
+			<div class='col-lg-9 studentinfo'>
+				<div><span class='att'>firstname:&nbsp &nbsp &nbsp</span><span class='val'></span></div>
+				<div><span class='att'>middlename:</span><span class='val'></span></div>
+				<div><span class='att'>lastname:&nbsp &nbsp &nbsp</span><span class='val'></</span></div>
+				<div><span class='att'>department:&nbsp </span><span class='val'></span></div>
+				<div><span class='att'>class:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </span><span class='val'></span></div>
+				<div><span class='att'>school fees status:</span><span style='font-size:40px; background-color:{$color};'></span></div>
+			</div>
+			</div>
+			<div class='row footer'>
+				<div class='col-lg-12'> 
+					<p>Unless otherwise noted, all content copyright FSTC, yaba</p> 
+					<p>All rights reserved. FSTC &copy 2017</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
