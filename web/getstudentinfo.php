@@ -2,10 +2,10 @@
 	 //$password=htmlspecialchars($password);
 		$firstname=$_GET['firstname'];
 		$lastname=$_GET['lastname'];
-		$dbhost = "localhost";
-		$dbuser = "root";
-		$dbpass = "";
-		$dbname = "fstc";
+		$dbhost = "sql8.freemysqlhosting.net";
+		$dbuser = "sql8180012";
+		$dbpass = "7NqGS1AuRY";
+		$dbname = "sql8180012";
 	    $conn = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname) or die("Cannot Connect to the Mysql Database. Please try again later!");
 		$sql="SELECT * FROM students_info WHERE first_name='$firstname' && last_name='$lastname' ";
 		$result = mysqli_query($conn, $sql)or die("Can not select from ");
