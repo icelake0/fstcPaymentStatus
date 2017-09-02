@@ -91,7 +91,7 @@
 						matricNumber=matNum;
 						document.getElementById("loginsatus").innerHTML="MatricNumber : "+matricNumber;
 						$.ajax({
-							url: "http://samcloudcgpacalc.herokuapp.com/api/login/"+matNum+"/"+pass,
+							url: "http://softwork.herokuapp.com/api/login/"+matNum+"/"+pass,
 							success: loginSussess
 						});
 					}
@@ -112,7 +112,7 @@
 					}
 					else{
 						$.ajax({
-							url: "http://samcloudcgpacalc.herokuapp.com/api/register/"+matNum+"/"+pass,
+							url: "http://softwork.herokuapp.com/api/register/"+matNum+"/"+pass,
 							success: signupsucess
 						});
 					}
@@ -126,7 +126,7 @@
 						$.mobile.changePage("../index.html#pageone");
 						document.getElementById("password").value="";
 						$.ajax({
-							url: "http://samcloudcgpacalc.herokuapp.com/api/getsim1Result/"+matricNumber,
+							url: "http://softwork.herokuapp.com/api/getsim1Result/"+matricNumber,
 							success: updateSim1ResultForm
 						});
 					}
@@ -151,7 +151,7 @@
 					}
 					//matricNumber = document.getElementById("matricNumber").value;
 					$.ajax({
-						url: "http://samcloudcgpacalc.herokuapp.com/api/getsim2Result/"+matricNumber,
+						url: "http://softwork.herokuapp.com/api/getsim2Result/"+matricNumber,
 						success: updateSim2ResultForm
 					});
 				}
@@ -165,7 +165,7 @@
 					document.getElementById("sim2grade"+i).value = myObj["sim2grade"+i];
 					}
 					$.ajax({
-						url: "http://samcloudcgpacalc.herokuapp.com/api/getsim3Result/"+matricNumber,
+						url: "http://softwork.herokuapp.com/api/getsim3Result/"+matricNumber,
 						success: updateSim3ResultForm
 					});
 				}
@@ -179,7 +179,7 @@
 					document.getElementById("sim3grade"+i).value = myObj["sim3grade"+i];
 					}
 					$.ajax({
-							url: "http://samcloudcgpacalc.herokuapp.com/api/getsim4Result/"+matricNumber,
+							url: "http://softwork.herokuapp.com/api/getsim4Result/"+matricNumber,
 							success: updateSim4ResultForm
 						});
 				}
@@ -193,7 +193,7 @@
 					document.getElementById("sim4grade"+i).value = myObj["sim4grade"+i];
 					}
 					$.ajax({
-							url: "http://samcloudcgpacalc.herokuapp.com/api/getsim5Result/"+matricNumber,
+							url: "http://softwork.herokuapp.com/api/getsim5Result/"+matricNumber,
 							success: updateSim5ResultForm
 						});
 				}
@@ -207,7 +207,7 @@
 					document.getElementById("sim5grade"+i).value = myObj["sim5grade"+i];
 					}
 					$.ajax({
-							url: "http://samcloudcgpacalc.herokuapp.com/api/getsim6Result/"+matricNumber,
+							url: "http://softwork.herokuapp.com/api/getsim6Result/"+matricNumber,
 							success: updateSim6ResultForm
 						});
 				}
@@ -284,7 +284,7 @@
 					document.getElementById("sim1grade15").value =getGrade(score);
 				});
 				$("#calcSim1GpBtn").on("tap",function(){
-					//http://samcloudcgpacalc.herokuapp.com/api/updateSim1Result/1234/hello
+					//http://softwork.herokuapp.com/api/updateSim1Result/1234/hello
 					var sim1result = new Object();
 					for(i=1; i<=15; i++){
 						sim1result["sim1ctt"+i]=document.getElementById("sim1ctt"+i).value;
@@ -297,7 +297,7 @@
 					//console.log(sim1result);
 					//console.log(sim1result);
 					$.ajax({
-						url: "http://samcloudcgpacalc.herokuapp.com/api/updateSim1Result/"+matricNumber+"/"+sim1result
+						url: "http://softwork.herokuapp.com/api/updateSim1Result/"+matricNumber+"/"+sim1result
 					});
 						var totalcu=0;
 						var totalpoint=0;
@@ -382,7 +382,7 @@
 					document.getElementById("sim2grade15").value =getGrade(score);
 				});
 				$("#calcSim2GpBtn").on("tap",function(){
-					//http://samcloudcgpacalc.herokuapp.com/api/updateSim1Result/1234/hello
+					//http://softwork.herokuapp.com/api/updateSim1Result/1234/hello
 					var sim2result = new Object();
 					for(i=1; i<=15; i++){
 						sim2result["sim2ctt"+i]=document.getElementById("sim2ctt"+i).value;
@@ -395,7 +395,7 @@
 					//console.log(sim2result);
 					//console.log(sim2result);
 					$.ajax({
-						url: "http://samcloudcgpacalc.herokuapp.com/api/updateSim2Result/"+matricNumber+"/"+sim2result
+						url: "http://softwork.herokuapp.com/api/updateSim2Result/"+matricNumber+"/"+sim2result
 					});
 						var totalcu=0;
 						var totalpoint=0;
@@ -481,7 +481,7 @@
 					document.getElementById("sim3grade15").value =getGrade(score);
 				});
 				$("#calcSim3GpBtn").on("tap",function(){
-					//http://samcloudcgpacalc.herokuapp.com/api/updatesim3Result/1234/hello
+					//http://softwork.herokuapp.com/api/updatesim3Result/1234/hello
 					var sim3result = new Object();
 					for(i=1; i<=15; i++){
 						sim3result["sim3ctt"+i]=document.getElementById("sim3ctt"+i).value;
@@ -494,7 +494,7 @@
 					//console.log(sim3result);
 					//console.log(sim3result);
 					$.ajax({
-						url: "http://samcloudcgpacalc.herokuapp.com/api/updateSim3Result/"+matricNumber+"/"+sim3result
+						url: "http://softwork.herokuapp.com/api/updateSim3Result/"+matricNumber+"/"+sim3result
 					});
 						var totalcu=0;
 						var totalpoint=0;
@@ -578,7 +578,7 @@
 					document.getElementById("sim4grade15").value =getGrade(score);
 				});
 				$("#calcSim4GpBtn").on("tap",function(){
-					//http://samcloudcgpacalc.herokuapp.com/api/updatesim4Result/1234/hello
+					//http://softwork.herokuapp.com/api/updatesim4Result/1234/hello
 					var sim4result = new Object();
 					for(i=1; i<=15; i++){
 						sim4result["sim4ctt"+i]=document.getElementById("sim4ctt"+i).value;
@@ -591,7 +591,7 @@
 					//console.log(sim4result);
 					//console.log(sim4result);
 					$.ajax({
-						url: "http://samcloudcgpacalc.herokuapp.com/api/updateSim4Result/"+matricNumber+"/"+sim4result
+						url: "http://softwork.herokuapp.com/api/updateSim4Result/"+matricNumber+"/"+sim4result
 					});
 						var totalcu=0;
 						var totalpoint=0;
@@ -674,7 +674,7 @@
 					document.getElementById("sim5grade15").value =getGrade(score);
 				});
 				$("#calcSim5GpBtn").on("tap",function(){
-					//http://samcloudcgpacalc.herokuapp.com/api/updatesim4Result/1234/hello
+					//http://softwork.herokuapp.com/api/updatesim4Result/1234/hello
 					var sim5result = new Object();
 					for(i=1; i<=15; i++){
 						sim5result["sim5ctt"+i]=document.getElementById("sim5ctt"+i).value;
@@ -687,7 +687,7 @@
 					//console.log(sim4result);
 					//console.log(sim4result);
 					$.ajax({
-						url: "http://samcloudcgpacalc.herokuapp.com/api/updateSim5Result/"+matricNumber+"/"+sim5result
+						url: "http://softwork.herokuapp.com/api/updateSim5Result/"+matricNumber+"/"+sim5result
 					});
 						var totalcu=0;
 						var totalpoint=0;
@@ -770,7 +770,7 @@
 					document.getElementById("sim6grade15").value =getGrade(score);
 				});
 				$("#calcSim6GpBtn").on("tap",function(){
-					//http://samcloudcgpacalc.herokuapp.com/api/updatesim4Result/1234/hello
+					//http://softwork.herokuapp.com/api/updatesim4Result/1234/hello
 					var sim6result = new Object();
 					for(i=1; i<=15; i++){
 						sim6result["sim6ctt"+i]=document.getElementById("sim6ctt"+i).value;
@@ -783,7 +783,7 @@
 					//console.log(sim4result);
 					//console.log(sim4result);
 					$.ajax({
-						url: "http://samcloudcgpacalc.herokuapp.com/api/updateSim6Result/"+matricNumber+"/"+sim6result
+						url: "http://softwork.herokuapp.com/api/updateSim6Result/"+matricNumber+"/"+sim6result
 					});
 						var totalcu=0;
 						var totalpoint=0;
