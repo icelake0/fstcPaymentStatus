@@ -1,311 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-	  <!-- Include meta tag to ensure proper rendering and touch zooming -->
-		  <meta name="viewport" content="width=device-width, initial-scale=1">
-		  <!-- Include jQuery Mobile stylesheets -->
-		  <link rel="stylesheet" href="themes/c.min.css" />
-		  <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
-		  <link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
-		  <!-- Include the jQuery library -->
-		  <script src="jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
-		  <!-- Include the jQuery Mobile library -->
-		  <script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
-		  <style>
-		  .CGPAtext{
-			color:red;
-			font-size:100px;
+	  <title>Softwork</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="bootstrap/3.2.0/css/bootstrap.min.css">
+	  <script  type="text/javascript" src="jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+	  <script src="bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	  <style>
+		@font-face {
+		   font-family: myFirstFont;
+		   src: url(fonts/ristella/Ristella_PERSONAL_USE_ONLY.ttf);
+		}
+		.logoText{
+		padding:10px;
+		margin:5px;
+		height:20px;
+		width:20px;
+		font-size:30px;
+		color:#ffffff;
+		font-family:myFirstFont;
+		}
+		.footer{	
+			color:#ffffff;
+			font-size:16px;
 			text-align:center;
-		  }
-		  .CGPAinfo{
-			color:green;
-			align:center;
-			text-align:center;
-		  }
-		  #loginsatus{
-			background-color:#80ff80;
-			width:97%;
-			padding:5px 5px 5px 5px;
-			margin-bottom:10px;
-			font-size:20px;
-		  }
-		  .CGPAComment{
-			color:green;
-			align:center;
-			text-align:center;
-			font-size:30px;
-		  }
-		  .coursecad{
-			background-color: #ffffff;
-			padding:5px;
-			border-radius:5px;
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		  }
-		  </style>
+			bottom:0px;
+			background-color:#000000;
+		}
+		.container{
+			background-color:lightgreen;
+		}
+		.header{
+			background-color:#009900;
+			height:100px;
+		}
+		#schoollogo{
+			height:100px;
+			width:100px;
+		}
+		#schoolname{
+			display:inline;
+			font-size:40px;
+			padding-bottom:0px;
+			padding-top:50px;
+		}
+		#studentpicture{
+			height:200px;
+			width:200px;
+		}
+		.att{
+			font-size:25px;
+			color:#009900;
+		}
+		.val{
+			font-size:25px;
+		}
+		/*@media screen and (min-width: 768px) {
+			#schoolname{
+				display:inline;
+				font-size:30px;
+				padding-bottom:0px;
+				padding-top:50px;
+			}
+		}
+		@media screen and (min-width: 450px) {
+			#schoolname{
+				display:inline;
+				font-size:20px;
+				padding-bottom:0px;
+				padding-top:50px;
+			}
+		}*/
+	  </style>
+	  <script>
+			function loadstudentprofile() {
+				var firstname=document.getElementById('firstname').value;
+				var lastname=document.getElementById('lastname').value;
+				//if (firstname=="") {
+				//document.getElementById("txtHint").innerHTML="";
+				//return;
+				//} 
+			 if (window.XMLHttpRequest) {
+				xmlhttp=new XMLHttpRequest();
+			 } else {
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			 }
+			  xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				  document.getElementById('r').innerHTML=xmlhttp.responseText;
+				}
+			  }
+			  xmlhttp.open("GET","getstudentinfo.php?firstname="+firstname+"&lastname="+lastname,true);
+			  xmlhttp.send();
+			}
+	  </script>
 	</head>
-	<body >
-			<!--A header can contain one or two buttons, while the footer has no limit.-->
-		<div data-role="page" id="loginpage" data-theme="c">
-		  <div data-role="header" data-position="fixed" >
-				
-		  </div>
-	
-		  <div data-role="main" class="ui-content v-center" >
-				<img src="img/logo.jpeg" style="border-radius:50%;display: block;margin: auto;width:40%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-				<h1 style="text-align:center;font-size:25px; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; color:#ffffff">Sam Cloud CGPA Calculator</h1>
-				<div data-role="controlgroup" class='ui-shadow'>
-					<form>
-						<label for="text-basic">Matric Number :</label>
-						<input type="text" name="text-basic" id="matricnumber" value="">
-						<label for="password">Password :</label>
-						<input type="password" name="password" id="password" value="" autocomplete="off">
-						<a href="" id="login" class="ui-shadow ui-btn ui-corner-all">login</a><br/>
-						<span id="loginError" style="color:red; font-size:20px; text-align:center;"></span>
-						<a href="#signuppage" class="ui-shadow ui-btn ui-corner-all">Register</a>
-					</form>
+	<body>
+		<div class='container'>
+			<div class ='row header'>
+				<div col-lg-12>
+					<img id ='schoollogo'src='images/logo.jpg'>
+					<span id='schoolname'>Federal Science and Technice Colledge yaba</span>
 				</div>
-		  </div>
-
-		  <div data-role="footer" style="text-align:center;" data-position="fixed"> <!--data-type="horizontal"-- to make horizontal menues--->
-				<a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left">HELP</a>
-		  </div> 
-		</div>
-		<div data-role="page" id="signuppage" data-theme="c">
-		  <div data-role="header" data-position="fullscreen" >
-						
-		  </div>
-	
-		  <div data-role="main" class="ui-content v-center" >
-				<div data-role="controlgroup" class='ui-shadow'>
-					<form>
-						<label for="text-basic">Matric Number :</label>
-						<input type="text" name="text-basic" id="regmatnum" value="">
-						<label for="password">Password :</label>
-						<input type="password" name="password" id="regpass" value="" autocomplete="off">
-						<label for="password">Confirm Password :</label>
-						<input type="password" name="password" id="regcpass" value="" autocomplete="off">
-						<a href="#" id="signup"class="ui-shadow ui-btn ui-corner-all">Register</a>
-						<span id="signupError" style="color:red; font-size:20px; text-align:center;"></span>
-					</form>
+			</div>
+			<div class='row'>
+				<div class='col-lg-3'></div>
+				<div class='col-lg-6' style='margin-top:15px;background-color:#009900; padding:20px 20px 20px 20px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);'>
+					
+						<div class="form-group">
+								<label>firstname</label>
+								<input type="text" class="form-control" id="firstname">
+						</div>
+						<div class="form-group">
+							<label>lastname</label>
+							<input type="text" class="form-control" id="lastname">
+						</div>
+						<button type="submit" class="btn" style='background-color:#404040; color:#ffffff;' onclick='loadstudentprofile()'><span class="glyphicon glyphicon-log-in"></span> check</button>
 				</div>
-		  </div>
-
-		  <div data-role="footer" style="text-align:center;" data-position="fixed"> <!--data-type="horizontal"-- to make horizontal menues--->
-				<a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left">HELP</a>
-		  </div> 
-		</div>
-		<div data-role="page" id="pageone" data-theme="c">
-		  <div data-role="header" data-position="fixed" >
-				
-		  </div>
-	
-		  <div data-role="main" class="ui-content v-center" >
-				<div data-role="controlgroup" class='ui-shadow'>
-					<div id="loginsatus">Not Logged in</div>
-					<a href="#sim1resultpage" class="ui-btn ui-shadow ui-icon-cloud ui-btn-icon-left" data-transition="fade">Semester One</a>
-					<a href="#sim2resultpage" class="ui-btn ui-shadow ui-icon-cloud ui-btn-icon-left" data-transition="fade">Semester Two</a>
-					<a href="#sim3resultpage" class="ui-btn ui-shadow ui-icon-cloud ui-btn-icon-left" data-transition="fade">Semester Three</a>
-					<a href="#sim4resultpage" class="ui-btn ui-shadow ui-icon-cloud ui-btn-icon-left" data-transition="fade">Semester Four</a>
-					<a href="#sim5resultpage" class="ui-btn ui-shadow ui-icon-cloud ui-btn-icon-left" data-transition="fade">Semester Five</a>
-					<a href="#sim6resultpage" class="ui-btn ui-shadow ui-icon-cloud ui-btn-icon-left" data-transition="fade">Semester Six</a>
-					<a href="#CGPAmodel" class="ui-btn ui-shadow ui-icon-cloud ui-btn-icon-left"  id="checkCGPA">Check CGPA</a>
-					<a href="#loginpage" class="ui-btn ui-shadow ui-icon-lock ui-btn-icon-left" data-transition="fade">Logout</a>
-				</div>
-		  </div>
-
-		  <div data-role="footer" style="text-align:center;" data-position="fixed"> <!--data-type="horizontal"-- to make horizontal menues--->
-				<a href="#" class="ui-btn ui-icon-plus ui-btn-icon-left">HELP</a>
-		  </div> 
-		</div>
-		<!--beginning of semester six result page-->
-			<div data-role="page" id="sim6resultpage" data-theme="c">
-				<div data-role="header" data-position="fullscreen" >
-								
-				</div>
-			    <div data-role="main" class="ui-content" id='mainContainer'>
-						<!--main content goes here-->
-						<h1 style="text-align:center;font-size:25px; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; color:#ffffff">Semester Six Results</h1>
-				</div>
-			  <div data-role="footer" style="text-align:center;" data-position="fixed">
-				<!--no footer conitent added -->
-			  </div> 
+				<div class='col-lg-3'></div>
+			</div>
+			<div class='row' style='margin-top:10px;' id='r'>
+				<div class='col-lg-3'>
+				<img id ='studentpicture'src='profilePics/default.png'>
+			</div>
+			<div class='col-lg-9 studentinfo'>
+				<div><span class='att'>firstname:&nbsp &nbsp &nbsp</span><span class='val'></span></div>
+				<div><span class='att'>middlename:</span><span class='val'></span></div>
+				<div><span class='att'>lastname:&nbsp &nbsp &nbsp</span><span class='val'></</span></div>
+				<div><span class='att'>department:&nbsp </span><span class='val'></span></div>
+				<div><span class='att'>class:&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </span><span class='val'></span></div>
+				<div><span class='att'>school fees status:</span><span style='font-size:40px; background-color:{$color};'></span></div>
 			</div>
 			</div>
-		<!--end of semester six result page-->
-		<!--beginning of semester five result page-->
-			<div data-role="page" id="sim5resultpage" data-theme="c">
-				<div data-role="header" data-position="fullscreen" >
-							
+			<div class='row footer'>
+				<div class='col-lg-12'> 
+					<p>Unless otherwise noted, all content copyright FSTC, yaba</p> 
+					<p>All rights reserved. FSTC &copy 2017</p>
 				</div>
-			    <div data-role="main" class="ui-content" id='mainContainer'>
-						<!--main content goes here-->
-						<h1 style="text-align:center;font-size:25px; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; color:#ffffff">Semester Five Results</h1>
-				</div>
-			  <div data-role="footer" style="text-align:center;" data-position="fixed">
-				<!--no footer conitent added -->
-			  </div> 
 			</div>
-			</div>
-		<!--end of semester five result page-->
-		<!--beginning of semester four result page-->
-			<div data-role="page" id="sim4resultpage" data-theme="c">
-				<div data-role="header" data-position="fullscreen" >
-								
-				</div>
-			    <div data-role="main" class="ui-content" id='mainContainer'>
-						<!--main content goes here-->
-						<h1 style="text-align:center;font-size:25px; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; color:#ffffff">Semester Four Results</h1>
-				</div>
-			  <div data-role="footer" style="text-align:center;" data-position="fixed">
-				<!--no footer conitent added -->
-			  </div> 
-			</div>
-			</div>
-		<!--end of semester four result page-->
-		<!--beginning of semester three result page-->
-			<div data-role="page" id="sim3resultpage" data-theme="c">
-				<div data-role="header" data-position="fullscreen" >
-								
-				</div>
-			  <div data-role="main" class="ui-content" id='mainContainer'>
-						<!--main content goes here-->
-						<h1 style="text-align:center;font-size:25px; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; color:#ffffff">Semester Three Results</h1>
-			  </div>
-			  <div data-role="footer" style="text-align:center;" data-position="fixed">
-				<!--no footer conitent added -->
-			  </div> 
-			</div>
-		<!--end of semester three result page-->
-		<!--beginning of semester two result page-->
-			<div data-role="page" id="sim2resultpage" data-theme="c">
-				<div data-role="header" data-position="fullscreen" >
-								
-				</div>
-			  <div data-role="main" class="ui-content" id='mainContainer'>
-						<!--main content goes here-->
-						<h1 style="text-align:center;font-size:25px; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; color:#ffffff">Semester Two Results</h1>
-				</div>		
-			  <div data-role="footer" style="text-align:center;" data-position="fixed">
-				<!--no footer conitent added -->
-			  </div> 
-			</div>
-		<!--end of semester two result page-->
-		<!--beginning of semester one result page-->
-			<div data-role="page" id="sim1resultpage" data-theme="c">
-				<div data-role="header" data-position="fullscreen" >
-							
-				</div>
-			  <div data-role="main" class="ui-content" id='mainContainer'>
-						<!--main content goes here-->
-						<h1 style="text-align:center;font-size:25px; text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; color:#ffffff">Semester One Results</h1>
-			  </div>
-			  <div data-role="footer" style="text-align:center;" data-position="fixed">
-				<!--no footer conitent added -->
-			  </div> 
-			</div>
-		<!--end of semester one result page-->
-		
-		<!--beginning of one semester calculation dialog-->
-		<div data-role="page" data-dialog="true" id="sim1GPAmodel" data-overlay-theme="c" data-theme="c">
-			  <div data-role="header" >
-				<h1>Semester One GPA</h1>
-			  </div>
-			  <div data-role="main" class="ui-content">
-				<span class='CGPAinfo'><p>Your Semester one GPA is:</p></span>
-				<span class='CGPAtext'><p id="sim1GPA" >0.00</p></span>
-				<span class='CGPAComment' id="sim1GPAComment"><p> a little text goes in</p></span>
-			  </div>
-
-			  <div data-role="footer">
-			  <!--nothing in the footer yet-->
-			  </div>
 		</div>
-		<div data-role="page" data-dialog="true" id="sim2GPAmodel" data-overlay-theme="c" data-theme="c">
-			  <div data-role="header" >
-				<h1>Semester Two GPA</h1>
-			  </div>
-			  <div data-role="main" class="ui-content">
-				<span class='CGPAinfo'><p>Your Semester two GPA is:</p></span>
-				<span class='CGPAtext'><p id="sim2GPA" >0.00</p></span>
-				<span class='CGPAComment' id="sim2GPAComment"><p> a little text goes in</p></span>
-			  </div>
-
-			  <div data-role="footer">
-			  <!--nothing in the footer yet-->
-			  </div>
-		</div>
-		<div data-role="page" data-dialog="true" id="sim3GPAmodel" data-overlay-theme="c" data-theme="c">
-			  <div data-role="header" >
-				<h1>Semester Three GPA</h1>
-			  </div>
-			  <div data-role="main" class="ui-content">
-				<span class='CGPAinfo'><p>Your Semester Three GPA is:</p></span>
-				<span class='CGPAtext'><p id="sim3GPA" >0.00</p></span>
-				<span class='CGPAComment' id="sim3GPAComment"><p> a little text goes in</p></span>
-			  </div>
-
-			  <div data-role="footer">
-			  <!--nothing in the footer yet-->
-			  </div>
-		</div>
-		<div data-role="page" data-dialog="true" id="sim4GPAmodel" data-overlay-theme="c" data-theme="c">
-			  <div data-role="header" >
-				<h1>Semester Four GPA</h1>
-			  </div>
-			  <div data-role="main" class="ui-content">
-				<span class='CGPAinfo'><p>Your Semester Four GPA is:</p></span>
-				<span class='CGPAtext'><p id="sim4GPA" >0.00</p></span>
-				<span class='CGPAComment' id="sim4GPAComment"><p> a little text goes in</p></span>
-			  </div>
-
-			  <div data-role="footer">
-			  <!--nothing in the footer yet-->
-			  </div>
-		</div>
-		<div data-role="page" data-dialog="true" id="sim5GPAmodel" data-overlay-theme="c" data-theme="c">
-			  <div data-role="header" >
-				<h1>Semester Five GPA</h1>
-			  </div>
-			  <div data-role="main" class="ui-content">
-				<span class='CGPAinfo'><p>Your Semester Five GPA is:</p></span>
-				<span class='CGPAtext'><p id="sim5GPA" >0.00</p></span>
-				<span class='CGPAComment' id="sim5GPAComment"><p> a little text goes in</p></span>
-			  </div>
-
-			  <div data-role="footer">
-			  <!--nothing in the footer yet-->
-			  </div>
-		</div>
-		<div data-role="page" data-dialog="true" id="sim6GPAmodel" data-overlay-theme="c" data-theme="c">
-			  <div data-role="header" >
-				<h1>Semester Six GPA</h1>
-			  </div>
-			  <div data-role="main" class="ui-content">
-				<span class='CGPAinfo'><p>Your Semester Six GPA is:</p></span>
-				<span class='CGPAtext'><p id="sim6GPA" >0.00</p></span>
-				<span class='CGPAComment' id="sim6GPAComment"><p> a little text goes in</p></span>
-			  </div>
-
-			  <div data-role="footer">
-			  <!--nothing in the footer yet-->
-			  </div>
-		</div>
-		<div data-role="page" data-dialog="true" id="CGPAmodel" data-overlay-theme="c" data-theme="c">
-			  <div data-role="header" >
-				<h1>CGPA</h1>
-			  </div>
-			  <div data-role="main" class="ui-content">
-				<span class='CGPAinfo'><p>Your CGPA is:</p></span>
-				<span class='CGPAtext'><p id="CGPA" >0.00</p></span>
-				<span class='CGPAComment' id="CGPAComment"><p> a little text goes in</p></span>
-			  </div>
-
-			  <div data-role="footer">
-			  <!--nothing in the footer yet-->
-			  </div>
-		</div>
-		<!--endof of one semester calculation dialog-->
-		
 	</body>
 </html>
-<script src="js/index.js"></script>
