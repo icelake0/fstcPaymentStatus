@@ -1,2 +1,2 @@
 # fstcPaymentStatus
-this is an app that federal science and technical college  (FSTC), yabe can use to check payment status of there student before checking them into the hostel, hence solving the problem of forgetting school fees clearance slip at home on resumption.
+A web app prototype for checking students school fees payment status before checking them into the hostel. The aim is to solve the problem of forgotten school fees clearance slip at home on resumption.
